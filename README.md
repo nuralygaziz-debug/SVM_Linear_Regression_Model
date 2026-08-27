@@ -60,7 +60,7 @@ Always predict Pass
 
 - Accuracy = $$
 Accuracy = \frac{TP + TN}{TP + TN + FP + FN}
-$$
+             $$
   
 - Balanced Accuracy= $$
 Balanced\ Accuracy = \frac{Recall_{class1} + Recall_{class2}}{2}
