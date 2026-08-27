@@ -54,16 +54,35 @@ Always predict Pass
 
 ---
 
-### 2. Правильные метрики
+### 2. Метрики
 
 Для оценки моделей используются:
 
-- Accuracy
-- Balanced Accuracy
-- Macro-F1
-- Fail Precision
-- Fail Recall
-- Fail F1
+- Accuracy = $$
+Accuracy = \frac{TP + TN}{TP + TN + FP + FN}
+$$
+  
+- Balanced Accuracy= $$
+Balanced\ Accuracy = \frac{Recall_{class1} + Recall_{class2}}{2}
+$$
+  
+- Macro-F1 = $$
+Macro\text{-}F1 = \frac{F1_1 + F1_2 + ... + F1_n}{n}
+$$
+  
+- Fail Precision = $$
+Precision_{fail} = \frac{TP_{fail}}{TP_{fail} + FP_{fail}}
+$$
+
+- Fail Recall = $$
+Recall_{fail} = \frac{TP_{fail}}{TP_{fail} + FN_{fail}}
+$$
+
+
+- Fail F1 = $$
+F1_{fail} = 2 \cdot \frac{Precision_{fail} \cdot Recall_{fail}}
+{Precision_{fail} + Recall_{fail}}
+$$
 
 Особое внимание уделяется классу `Fail`, потому что именно его сложнее всего обнаружить из-за малого количества примеров.
 
