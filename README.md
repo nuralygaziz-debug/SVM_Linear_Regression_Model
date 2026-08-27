@@ -273,34 +273,6 @@ Stratified 5-Fold Cross-Validation
 
 ---
 
-## Как запустить
-
-### Вариант 1. Google Colab
-
-1. Открыть Google Colab.
-2. Загрузить файл `student_pass_fail_analysis_ru.ipynb`.
-3. Выполнить:
-
-```text
-Runtime → Restart session and run all
-```
-
-### Вариант 2. Локально
-
-Установить зависимости:
-
-```bash
-pip install -r requirements.txt
-```
-
-Затем открыть notebook:
-
-```bash
-jupyter notebook
-```
-
----
-
 ## Датасет
 
 В проекте используется CSV-датасет, загружаемый напрямую из Hugging Face.
