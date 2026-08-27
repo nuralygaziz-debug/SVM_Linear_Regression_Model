@@ -179,6 +179,12 @@ $$
 
 ---
 
+## SVM Visualization
+
+The following plot shows the student data points, the linear SVM decision hyperplane, margin boundaries, and support vectors.
+
+![Linear SVM Hyperplane](svm_hyperplane.png)
+
 ### 6. Linear SVM
 
 Для SVM используется:
