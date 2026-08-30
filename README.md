@@ -214,10 +214,9 @@ The following plot shows the student data points, the linear SVM decision hyperp
 ```python
 kernel="linear"
 ```
-```text
-я использую Soft Margin SVM потому что
-датасет имеет шумы и не равномерный график для этого и нужен Soft Margin
-а если бы в датасете не было бы шумов я бы взял Hard Margin SVM
+```
+Я взял Soft Margin SVM потому что
+датасет имеет шумы и не равномерный график
 
 ```
 
