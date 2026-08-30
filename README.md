@@ -209,6 +209,10 @@ The following plot shows the student data points, the linear SVM decision hyperp
 
 ### 6. Linear SVM
 
+$$
+\min_{w,b} \frac{1}{2}\|w\|^2 + C\sum_{i=1}^{n}\max(0,\,1-y_i(w^Tx_i+b))
+$$
+
 Для SVM используется:
 
 ```python
@@ -221,6 +225,10 @@ kernel="linear"
 ```
 
 ## SVM Hyperplane
+
+$$
+w^T x + b = 0
+$$
 
 График показывает распределение студентов из датасета и разделяющую гиперплоскость линейной модели SVM.
 
