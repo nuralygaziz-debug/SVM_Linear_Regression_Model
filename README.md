@@ -128,6 +128,17 @@ $$
 
 Особое внимание уделяется классу `Fail`, потому что именно его сложнее всего обнаружить из-за малого количества примеров.
 
+### Probability threshold experiment
+
+Для Logistic Regression используется `predict_proba()`.
+
+Probability threshold выбирается по Validation, после чего оценивается на Test.
+
+Это позволяет исследовать компромисс между:
+
+- высоким `Fail Recall`;
+- высоким `Fail Precision`.
+
 ---
 
 ### 3. Разделение данных
@@ -274,21 +285,6 @@ pred_logistic == pred_svm
 ```
 
 Если Logistic Regression и Linear SVM дают одинаковые результаты для всех объектов Test, это выводится отдельно и интерпретируется.
-
----
-
-
-
-### 10. Probability threshold experiment
-
-Для Logistic Regression используется `predict_proba()`.
-
-Probability threshold выбирается по Validation, после чего оценивается на Test.
-
-Это позволяет исследовать компромисс между:
-
-- высоким `Fail Recall`;
-- высоким `Fail Precision`.
 
 ---
 
