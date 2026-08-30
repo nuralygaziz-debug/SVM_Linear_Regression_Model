@@ -212,11 +212,6 @@ $$
 
 ---
 
-## SVM Visualization
-
-The following plot shows the student data points, the linear SVM decision hyperplane, margin boundaries, and support vectors.
-
-![Linear SVM Hyperplane](svm_hyperplane.png)
 
 ### 6. Linear SVM
 
@@ -240,6 +235,9 @@ kernel="linear"
 $$
 w^T x + b = 0
 $$
+
+![Uploading image.png…]()
+
 
 График показывает распределение студентов из датасета и разделяющую гиперплоскость линейной модели SVM.
 
