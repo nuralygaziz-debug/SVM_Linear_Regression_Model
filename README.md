@@ -95,6 +95,12 @@ $$
 Balanced\ Accuracy = \frac{Recall_{class1} + Recall_{class2}}{2}
 $$
 
+Recall: 
+
+$$
+Recall = \frac{TP}{TP + FN}
+$$
+
 Macro-F1:
 
 $$
