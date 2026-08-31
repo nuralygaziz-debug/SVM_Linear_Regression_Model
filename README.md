@@ -1,66 +1,65 @@
-# Прогнозирование успеваемости студентов: Pass / Fail
+# Student Performance Prediction: Pass / Fail
 
-## Датасет
-Этот датасет был взят с этого сайта https://huggingface.co/datasets/jason1966/algozee_student/blob/main/student_performance_interactions.csv?utm_source=chatgpt.com.
-Датасет содержит более 1000 строк и 18 признаков, из которых 9 были отобраны для построения модели.
-Данные отобраны по наиболее значимым признакам, которые могут влиять на итоговый результат тестирования студентов.
-Датасет имеет относительно небольшую популярность, что снижает вероятность его широкого использования в аналогичных проектах.
+## Dataset
+This dataset was taken from this website https://huggingface.co/datasets/jason1966/algozee_student/blob/main/student_performance_interactions.csv?utm_source=chatgpt.com.
+Dataset содержит более 1000 строк и 18 признаков, из которых 9 были отобраны для построения модели.
+The data was selected based on the most significant features that may affect students' final test results.
+Dataset имеет относительно небольшую популярность, что снижает вероятность его широкого использования в аналогичных проектах.
 
-## Исследовательский вопрос:
+## Research Question:
 
-> Помогает ли информация об образе жизни улучшить прогнозирование академической успеваемости?
+> Does lifestyle information help improve the prediction of academic performance?
 
 
-## Проект
+## Project
 
-Главная цель проекта предсказывать сдаст ученик ли тест основываясь 9 признаками которые я выбрал
+The main goal of the project is to predict whether a student will pass the test based on the 9 features I selected.
 
 - `0 = Fail`
 - `1 = Pass`
 
-Главная особенность задачи — сильный дисбаланс классов. Поэтому высокая общая `Accuracy` не считается достаточным доказательством хорошей работы модели.
+The main feature of the task is a strong class imbalance. Therefore, high overall `Accuracy` is not considered sufficient evidence of good model performance.
 
 ---
 ### Feature selection experiment
 
-Сравниваются два набора признаков:
+Two sets of features are compared:
 
-#### Только академические признаки
+#### Academic features only
 
 - previous scores
 - study hours
 - attendance
 - homework completion
 
-#### Академические + образ жизни
+#### Academic + lifestyle
 
-Дополнительно:
+Additionally:
 
 - sleep hours
 - screen time
 - 
-#### Не отобранные признаки
-Мы не брали другие признаки к примеру как anxiety так как их трудно
-объективно объяснить в жизни
+#### Unselected features
+We did not use other features, such as anxiety, because they are difficult to explain objectively in real life.
 ---
 
 ## Selected Features
 
-| № | Признак | Категория | Описание | Влияние на результат |
+| № | Feature | Category | Description | Impact on result |
 |---|---|---|---|---|
-| 1 | previous_score | Учёба | Предыдущая оценка ученика, показывающая его общий уровень успеваемости. | 🟢 Положительное |
-| 2 | math_prev_score | Учёба | Предыдущая оценка по математике, отражающая уровень знаний по математике. | 🟢 Положительное |
-| 3 | science_prev_score | Учёба | Предыдущая оценка по естественным наукам. | 🟢 Положительное |
-| 4 | language_prev_score | Учёба | Предыдущая оценка по языковым предметам. | 🟢 Положительное |
-| 5 | daily_study_hours | Учёба | Среднее количество часов учёбы в день. | 🟢 Положительное |
-| 6 | attendance_percentage | Учёба | Процент посещаемости занятий. | 🟢 Положительное |
-| 7 | homework_completion_rate | Учёба | Процент выполненных домашних заданий. | 🟢 Положительное |
-| 8 | sleep_hours | Образ жизни | Среднее количество часов сна в сутки. | 🟢 Положительное |
-| 9 | screen_time_hours | Образ жизни | Среднее количество часов, проведённых за экраном. | 🔴 Отрицательное |
+| 1 | previous_score | Academic | Previous student score, showing their overall academic performance. | 🟢 Positive |
+| 2 | math_prev_score | Academic | Previous mathematics score, reflecting the student's level of mathematical knowledge. | 🟢 Positive |
+| 3 | science_prev_score | Academic | Previous science score. | 🟢 Positive |
+| 4 | language_prev_score | Academic | Previous language-subject score. | 🟢 Positive |
+| 5 | daily_study_hours | Academic | Average number of study hours per day. | 🟢 Positive |
+| 6 | attendance_percentage | Academic | Class attendance percentage. | 🟢 Positive |
+| 7 | homework_completion_rate | Academic | Percentage of completed homework assignments. | 🟢 Positive |
+| 8 | sleep_hours | Lifestyle | Average number of hours of sleep per day. | 🟢 Positive |
+| 9 | screen_time_hours | Lifestyle | Average number of hours spent on screens. | 🔴 Negative |
 
 ---
 
-## Структура проекта
+## Project Structure
 
 ```text
 student-pass-fail-ml-github/
@@ -72,23 +71,23 @@ student-pass-fail-ml-github/
 
 ---
 
-## Что реализовано
+## Implemented
 
 ### 1. Baseline
 
-Добавлена простая baseline-модель:
+A simple baseline model was added:
 
 ```text
 Always predict Pass
 ```
 
-Она показывает важную проблему несбалансированной классификации: можно получить высокую Accuracy, но не обнаружить ни одного студента класса `Fail`.
+It demonstrates an important problem of imbalanced classification: high Accuracy can be achieved while not detecting a single student from the `Fail` class.
 
 ---
 
-### 2. Метрики
+### 2. Metrics
 
-Для оценки моделей используются:
+The following metrics are used to evaluate the models:
 
 - Accuracy  
 - Balanced Accuracy  
@@ -97,7 +96,7 @@ Always predict Pass
 - Fail Recall
 - Fail F1
 
-  ### Метрики
+  ### Metrics
 
 Accuracy:
 
@@ -142,41 +141,41 @@ F1_{fail} = 2 \cdot \frac{Precision_{fail} \cdot Recall_{fail}}
 {Precision_{fail} + Recall_{fail}}
 $$
 
-Особое внимание уделяется классу `Fail`, потому что именно его сложнее всего обнаружить из-за малого количества примеров.
+Special attention is paid to the `Fail` class because it is the most difficult to detect due to the small number of examples.
 
 ### Probability threshold experiment
 
-Для Logistic Regression используется `predict_proba()`.
+`predict_proba()` is used for Logistic Regression. `predict_proba()`.
 
-Probability threshold выбирается по Validation, после чего оценивается на Test.
+The probability threshold is selected on Validation and then evaluated on Test.
 
-Это позволяет исследовать компромисс между:
+This makes it possible to investigate the trade-off between:
 
-- высоким `Fail Recall`;
-- высоким `Fail Precision`.
+- high `Fail Recall`;
+- high `Fail Precision`.
 
 ---
 
-### 3. Разделение данных
+### 3. Data Splitting
 
-Используется один последовательный pipeline:
+A single sequential pipeline is used:
 
 ```text
 Train / Validation / Test
 ≈ 70% / 15% / 15%
 ```
 
-- Train — обучение моделей.
-- Validation — подбор гиперпараметров.
-- Test — только финальная оценка.
+- Train — model training.
+- Validation — hyperparameter selection.
+- Test — final evaluation only.
 
-Разделение выполняется с `stratify`, чтобы сохранить соотношение классов.
+The split is performed using `stratify` to preserve the class ratio.
 
 ---
 
-### 4. Масштабирование
+### 4. Scaling
 
-`StandardScaler` обучается только на Train:
+`StandardScaler` is fitted only on Train:
 
 ```python
 scaler.fit(X_train)
@@ -186,27 +185,26 @@ $$
 X_{scaled} = \frac{X - \mu}{\sigma}
 $$
 
-где:
-- $X$ — исходное значение
-- $\mu$ — среднее значение признака
-- $\sigma$ — стандартное отклонение
-- $X_{scaled}$ — масштабированное значение
+where:
+- $X$ — original value
+- $\mu$ — feature mean
+- $\sigma$ — standard deviation
+- $X_{scaled}$ — scaled value
 
-После этого он применяется к Validation и Test.
+It is then applied to Validation and Test.
 
-Это предотвращает data leakage(это утечка информаций из тестовых данных в обучение модели).
+This prevents data leakage (the leakage of information from test data into model training).
 
 ---
 
 ### 5. Logistic Regression
 
-Для Logistic Regression исследуются:
+The following are investigated for Logistic Regression:
 
 ```text
 C = 0.01, 0.1, 1, 10
-С это параметр который определяет силу регуляризации
-чем меньше С тем сильнее регуляризация а чем больше С тем
-сильнее регуляризация
+C is a parameter that determines the strength of regularization.
+The smaller C is, the stronger the regularization; the larger C is, the weaker the regularization.
 ```
 
 $$
@@ -217,14 +215,13 @@ $$
 
 ```text
 class_weight = None / balanced
-class weight это параметр который определяет насколько сильно
-модель должна учитывать каждый класс
+class weight is a parameter that determines how strongly the model should account for each class.
 ```
 $$
 w_i = \frac{n}{k \cdot n_i}
 $$
 
-Выбор параметров выполняется по Validation.
+Parameter selection is performed using Validation.
 
 ---
 
@@ -235,14 +232,13 @@ $$
 \min_{w,b} \frac{1}{2}\|w\|^2 + C\sum_{i=1}^{n}\max(0,\,1-y_i(w^Tx_i+b))
 $$
 
-Для SVM используется:
+The following is used for SVM:
 
 ```python
 kernel="linear"
 ```
 ```
-Я взял Soft Margin SVM потому что
-датасет имеет шумы и не равномерный график
+I chose Soft Margin SVM because the dataset contains noise and the graph is not evenly distributed.
 z
 ```
 
@@ -258,38 +254,38 @@ $$
 
 
 
-График показывает распределение студентов из датасета и разделяющую гиперплоскость линейной модели SVM.
+The graph shows the distribution of students from the dataset and the separating hyperplane of the linear SVM model.
 
 
 
-Это соответствует линейной soft-margin SVM.
+This corresponds to a linear soft-margin SVM.
 
-Также исследуются разные значения:
+Different values are also investigated:
 
 ```text
 C = 0.01, 0.1, 1, 10
 ```
 
-и варианты balancing классов.
+and different class-balancing options.
 
 ---
 
-### 7. Анализ ошибок
+### 7. Error Analysis
 
-Вместо того чтобы ограничиваться только TN, FP, FN и TP, в проекте ошибки описываются напрямую:
+Instead of limiting the analysis to TN, FP, FN, and TP, errors in the project are described directly:
 
-- Фактически Fail → Предсказано Fail(True Negative)
-- Фактически Fail → Предсказано Pass(False Positive)
-- Фактически Pass → Предсказано Fail(False Negative)
-- Фактически Pass → Предсказано Pass(True Positive)
+- Actual Fail → Predicted Fail (True Negative)
+- Actual Fail → Predicted Pass (False Positive)
+- Actual Pass → Predicted Fail (False Negative)
+- Actual Pass → Predicted Pass (True Positive)
 
-Наиболее опасная ошибка:
+The most dangerous error:
 
 ```text
 Фактически Fail → Предсказано Pass
 ```
 
-Это означает, что модель пропустила студента группы риска.
+This means that the model missed a student from the risk group.
 
 ---
 
@@ -297,12 +293,12 @@ C = 0.01, 0.1, 1, 10
 
 ### Logistic Regression
 
-Confusion Matrix показывает правильные и неправильные предсказания модели для двух классов: Fail и Pass.
+The Confusion Matrix shows the model's correct and incorrect predictions for the two classes: Fail and Pass.
 
-- Диагональ — правильные предсказания.
-- Вне диагонали — ошибки модели.
+- Diagonal — correct predictions.
+- Off-diagonal — model errors.
 
-Чем больше правильных предсказаний и меньше ошибок, тем лучше модель.
+The more correct predictions and the fewer errors, the better the model.
 
 ![](./Безназвания.png)
 
@@ -311,9 +307,9 @@ Confusion Matrix показывает правильные и неправиль
 
 ### SVM
 
-Confusion Matrix показывает, насколько хорошо SVM определяет, сдаст ученик тест (Pass) или не сдаст (Fail).
+The Confusion Matrix shows how well SVM determines whether a student will pass (Pass) or fail (Fail) the test.
 
-Как и в Logistic Regression, диагональ показывает правильные предсказания, а значения вне диагонали — ошибки.
+As with Logistic Regression, the diagonal shows correct predictions, while values outside the diagonal represent errors.
 
 ![](./я.png)
 
@@ -321,29 +317,29 @@ Confusion Matrix показывает, насколько хорошо SVM оп�
 
 ### Comparison
 
-Лучшая модель — та, у которой больше правильных предсказаний и меньше ошибок.
+The best model is the one with more correct predictions and fewer errors.
 
 ---
 
-### 9. Проверка совпадения предсказаний моделей
+### 9. Checking Agreement Between Model Predictions
 
-В проект добавлена отдельная проверка:
+A separate check was added to the project:
 
 ```python
 pred_logistic == pred_svm
 ```
 
-Если Logistic Regression и Linear SVM дают одинаковые результаты для всех объектов Test, это выводится отдельно и интерпретируется.
+If Logistic Regression and Linear SVM produce the same results for all Test objects, this is displayed separately and interpreted.
 
 ---
 
-## Главный вывод проекта
+## Main Project Conclusion
 
-Для несбалансированной задачи высокая Accuracy не гарантирует хорошую модель.
+For an imbalanced task, high Accuracy does not guarantee a good model.
 
-Baseline может показывать высокую Accuracy, но при этом не находить ни одного студента класса `Fail`.
+The baseline may show high Accuracy while not detecting any student from the `Fail` class.
 
-Модель с balancing классов может иметь более низкую Accuracy, но значительно лучший `Fail Recall`.
+A model with class balancing may have lower Accuracy but significantly better `Fail Recall`.
 
 Например, ситуация:
 
@@ -353,27 +349,27 @@ Baseline может показывать высокую Accuracy, но при э
 Низкий Fail Precision
 ```
 
-означает:
+means:
 
-- модель хорошо находит студентов группы риска;
-- но одновременно создаёт много ложных тревог.
+- the model is good at finding students in the risk group;
+- but at the same time creates many false alarms.
 
-Поэтому итоговая оценка должна учитывать компромисс между Precision и Recall.
+Therefore, the final evaluation should consider the trade-off between Precision and Recall.
 
 ---
 
-## Ограничения проекта
+## Project Limitations
 
-В датасете относительно мало студентов класса `Fail`.
+The dataset contains relatively few students from the `Fail` class.
 
-После разделения Train / Validation / Test в Validation и Test остаётся примерно 10–11 объектов класса `Fail`.
+After the Train / Validation / Test split, approximately 10–11 objects from the `Fail` class remain in Validation and Test.
 
-Из-за этого выбор гиперпараметров по одному Validation split может быть нестабильным.
+Because of this, hyperparameter selection using a single Validation split may be unstable.
 
-В будущей версии проекта рекомендуется использовать:
+In a future version of the project, it is recommended to use:
 
 ```text
 Stratified 5-Fold Cross-Validation
 ```
-для выбора гиперпараметров, после чего выполнять одну финальную оценку на отдельном Test-наборе.
-Из-за небольшого количества объектов класса Fail использование кросс-валидации в текущей версии проекта не применяется, так как это может снижать стабильность оценки модели.
+for hyperparameter selection, followed by one final evaluation on a separate Test set.
+Due to the small number of `Fail` class objects, cross-validation is not used in the current version of the project because it may reduce the stability of the model evaluation.
