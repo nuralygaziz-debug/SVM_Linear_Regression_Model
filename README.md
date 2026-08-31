@@ -300,7 +300,7 @@ The Confusion Matrix shows the model's correct and incorrect predictions for the
 
 The more correct predictions and the fewer errors, the better the model.
 
-![](./Безназвания.png)
+![](./graph.png)
 
 
 
